@@ -1,0 +1,4 @@
+data/news-sentences-xut.txt
+__pycache__/
+word2vec_model/
+!word2vec_model/make_word2vec.py
