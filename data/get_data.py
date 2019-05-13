@@ -59,7 +59,7 @@ def get_word_from_wiki(path):
 
 if __name__ == '__main__':
 
-    host = "cdb-q1mnsxjb.gz.tencentcdb.com"
+    host = "******"
     user = "root"
     password = "A1@2019@me"
     database = "news_chinese"
