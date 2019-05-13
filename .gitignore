@@ -1,4 +1,5 @@
 data/news-sentences-xut.txt
 __pycache__/
 word2vec_model/word2*
+*.ipynb
 
