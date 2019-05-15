@@ -1,4 +1,4 @@
-from bottle import Bottle
+from bottle import Bottle, static_file, get
 from bottle import template
 from bottle import request
 import json
@@ -55,5 +55,21 @@ def index(name={"1":[1,2,3]}):
         print(contents_dict)
         return template('index.html', name=contents_dict)
 
+# Static Routes
+@root.route("/static/css/<filepath:re:.*\.css>", method=['GET', 'POST'])
+def css(filepath):
+    return static_file(filepath, root="static/css")
+
+@root.route("/static/font/<filepath:re:.*\.(eot|otf|svg|ttf|woff|woff2?)>", method=['GET', 'POST'])
+def font(filepath):
+    return static_file(filepath, root="static/font")
+
+@root.route("/static/img/<filepath:re:.*\.(jpg|png|gif|ico|svg)>", method=['GET', 'POST'])
+def img(filepath):
+    return static_file(filepath, root="static/img")
+
+@root.route("/static/js/<filepath:re:.*\.js>", method=['GET', 'POST'])
+def js(filepath):
+    return static_file(filepath, root="static/js")
 
 root.run(host='localhost', port=8091)
