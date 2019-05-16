@@ -5,66 +5,64 @@
         <title>新闻言论自动提取</title>
         <link type="text/css" href="/static/css/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="./static/css/bootstrap-theme.css">
-        <script src="./jquery.js"></script>
+        <script src="./static/js/jquery.js"></script>
         <script src="./static/js/bootstrap.js"></script>
 
         <script>
-                function myfunction(indexx){
+                function myfunction(){
                     
                     var str = '{{name}}';
                     var a = str.replace(/&quot;/g,"\"");
                     var data = JSON.parse(a);
                     console.log(data);
-                    var ones='';
-                    
+
+                    head = '<table class="table"><caption>新闻言论提取</caption><thead> \
+                                <tr><th>人名/机构名</th><th>动作</th><th>内容</th> </tr> </thead>'
+                        
+                    content = '<tbody>'
+
+
                     for(var key in data){
-                        var length_list = data[key];    
-                        ones = ones + length_list[indexx] + '<br>';
-                    
+                        var length_list = data[key];
+                        content = content + '<tr>' + '<td>' + length_list[0] + '</td>' + '<td>' + length_list[1] + '</td>' + '<td>' + length_list[2] + '</td>' + '</tr>' ;                  
                     }
-                    return ones
+                    content = content + '</tbody>' + '</table>'
+                    content = head + content
+                    return content
                 }
         </script>
     </head>
     <body>
             <!--<script>document.write("<p1>hello {{name}}</p1>")</script>-->
+            <div style="padding: 50px 50px 50px;">
+                <form class="bs-example bs-example-form" role="form" method="post">
+                    <div class="input-group">
+                        <span class="input-group-addon">url</span>
+                        <input type="text" class="form-control" name="string" placeholder="新闻url链接">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <br>
+                <br>
+                <form class="bs-example bs-example-form" role="form" method="post">
+                    <div class="input-group">
+                        <span class="input-group-addon">news</span>
+                        <input type="text" class="form-control" name="string" placeholder="新闻文本内容" />
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    
+                </form>
+            </div>
             
-            <form action="/" method="post">
-                <input type="text" name="string" placeholder="新闻url链接">
-                <input type="submit" value="submit">
-            </form>
-            <form action="/" method="post">
-                <input type="text" name="string" placeholder="新闻文本内容">
-                <input type="submit" value="submit" >
-            </form>
-            
 
-            <div id="container" style="width:1200px">
+            <script>document.write(myfunction())</script>
 
-                    <div id="header" style="background-color:#FFA500;">
-                    <h1 style="margin-bottom:0;">新闻言论提取</h1></div>
-                    
-                    <div id="menu" style="background-color:#FFD700;height:200px;width:100px;float:left;">
-                        <b id="renming">人名</b><br>
-                        <script>document.write(myfunction(0))</script>
-                    </div>
-                    
-                    <div id="content" style="background-color:#EEEEEE;height:200px;width:100px;float:left;">
-                        <b id="renming">动作</b><br>
-                        <script>document.write(myfunction(1))</script>
+            <div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
+                版权 © github.com/mosbest</div>
 
-                    </div>
-                    <div id="content" style="background-color:#616e60;height:200px;width:1000px;float:left;">
-                        <b id="renming">内容</b><br>
-                        <script>document.write(myfunction(2))</script>
-                    </div>
-                    
-                    <div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
-                    版权 © runoob.com</div>
-                    
-                    </div>
                      
-            
+
+
             
 
     </body>
