@@ -1,11 +1,33 @@
 # Automatic-speech-extraction
 新闻人物言论自动提取
 
+## 代码使用
+本次项目中的　语法分析　都是使用　哈工大　的　LTP 。而该模型过大，不好传送到github上面，所以这里讲解下载方式。
+	
+    1. 打开链接　https://github.com/HIT-SCIR/pyltp
+
+    2. 安装pyltp 
+
+	pip install pyltp
+    3.下载模型文件
+	
+    http://ltp.ai/download.html点击版本3.4.0的"模型"下方的ltp_data_v3.4.0.zip文件。
+    
+    解压，然后将文件夹重命名为　model/ 然后放在　该项目文件中　即可。
+
+最后　运行 index.py文件。
+```
+python index.py
+```
+然后在浏览器中输入网址 http://localhost:8091/
+即可使用了。
 ## 语料库的获取
 本次使用两个数据源，一个是wiki语料库，一个是新闻语料库。
 1. wiki语料库	
+
 	1. 
 	找到链接 https://dumps.wikimedia.org/zhwiki/20190401/　找到　zhwiki-20190401-pages-articles.xml.bz(或者其他的.xml.bz也可以)　点击下载
+    
 	2. 
 	打开链接 https://github.com/attardi/wikiextractor　然后克隆到本地
     ```
@@ -21,6 +43,7 @@
 2. 新闻语料库
 
 	可以从sql中提取，也可以从百度网盘自己下载。
+    
     如果要从sql中提取，请在 data/get_data.py 中最小面填写相应的值（    host =     user =    password =　database =   　 port = ）
     
     如果从百度云盘中提取
