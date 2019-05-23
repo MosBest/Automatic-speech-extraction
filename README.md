@@ -3,7 +3,9 @@
 
 ## 如果你想直接使用项目
 本次项目中的　语法分析　都是使用　哈工大　的　LTP 。而该模型过大，不好传送到github上面，所以这里讲解下载方式。
-	
+
+1.
+
     1. 打开链接　https://github.com/HIT-SCIR/pyltp
 
     2. 安装pyltp 
@@ -12,15 +14,27 @@
     3.下载模型文件
 	
   http://ltp.ai/download.html
-  点击版本3.4.0 的 "模型" 下方的ltp_data_v3.4.0.zip文件。
-    
-    解压，然后将文件夹重命名为　model/ 然后放在　该项目文件中　即可。
+  点击版本3.4.0 的 "模型" 下方的 ltp_data_v3.4.0.zip 文件。
 
-最后　运行 index.py文件。
+2. 
+
+	克隆该项目　git clone git@github.com:MosBest/Automatic-speech-extraction.git
+
+3. 
+
+将（１）中得到的　ltp_data_v3.4.0.zip　解压，然后将文件夹重命名为　model/ ，然后放在　该项目文件中　即可。
+
+4.
+
+运行 index.py文件。
 ```
 python index.py
 ```
+
+5.
+
 然后在浏览器中输入网址 http://localhost:8091/
+
 即可使用了。
 
 ## 如果你想自己从头到位理解一遍
@@ -36,7 +50,9 @@ python index.py
     (或者其他的.xml.bz也可以)　点击下载
     
 	2. 
-	打开链接 https://github.com/attardi/wikiextractor　然后克隆到本地
+	打开链接 https://github.com/attardi/wikiextractor
+    
+    然后克隆到本地
     ```
     git clone https://github.com/attardi/wikiextractor.git
     ```
