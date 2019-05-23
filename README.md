@@ -11,7 +11,8 @@
 	pip install pyltp
     3.下载模型文件
 	
-    http://ltp.ai/download.html点击版本3.4.0的"模型"下方的ltp_data_v3.4.0.zip文件。
+  http://ltp.ai/download.html
+  点击版本3.4.0 的 "模型" 下方的ltp_data_v3.4.0.zip文件。
     
     解压，然后将文件夹重命名为　model/ 然后放在　该项目文件中　即可。
 
@@ -26,7 +27,10 @@ python index.py
 1. wiki语料库	
 
 	1. 
-	找到链接 https://dumps.wikimedia.org/zhwiki/20190401/　找到　zhwiki-20190401-pages-articles.xml.bz(或者其他的.xml.bz也可以)　点击下载
+	找到链接 https://dumps.wikimedia.org/zhwiki/20190401/　
+    
+    找到　zhwiki-20190401-pages-articles.xml.bz
+    (或者其他的.xml.bz也可以)　点击下载
     
 	2. 
 	打开链接 https://github.com/attardi/wikiextractor　然后克隆到本地
