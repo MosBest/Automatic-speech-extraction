@@ -22,11 +22,12 @@ string1 = """
 root = Bottle()
 
 @root.route('/', method=['GET', 'POST'])
-@root.route('/<name>', method=['GET', 'POST'])
-def index(name={"1":[1,2,3]}):
+def index():
     print(request.method)
     if request.method == 'GET':
         print("GET")
+        name = {}
+        name = json.dumps(name)
         return template('index.html', name=name)
     else:
         print("pust")

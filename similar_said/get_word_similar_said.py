@@ -31,7 +31,7 @@ def get_words_said(model_path):
     model = Word2Vec.load(model_path)
     related_words = get_related_words(['说', '表示', '认为'], model)
     related_words = sorted(related_words.items(), key=lambda x: x[1], reverse=True)
-    said = [i[0] for i in related_words if i[1] >= 6]
+    said = [i[0] for i in related_words if i[1] >= 1]
     return said
 
 
