@@ -66,6 +66,7 @@ def del_sentences(string):
     ltp_model_path = './model/'
     sentences = split_sentences(string)
     sents = split_words(sentences)
+
     postags = get_word_pos(ltp_model_path, sents)
     contents = dependency_parsing(ltp_model_path, sents, postags, said)
     contents_dict = {}
@@ -86,4 +87,4 @@ if __name__ == '__main__':
 
     每个人站在不同的角度也都给出了自己的看法，其实个人认为很多东西都是纯天然的最好，而对于人造奶这样的市场，大家觉得怎么样呢？你会选择喝人造奶吗？
     """
-    del_sentences(string)
+    print( del_sentences(string) )
