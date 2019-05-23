@@ -1,6 +1,7 @@
 import os
-from urils import deal
-from get_word_similar_said import get_words_said
+from data.urils import deal
+from similar_said.get_word_similar_said import load_said
+
 
 def split_sentences(string):
     from pyltp import SentenceSplitter
@@ -58,6 +59,22 @@ def dependency_parsing(ltp_model_path, sents, postags, said):
     return contents
 
 
+def del_sentences(string):
+    path = "./similar_said/"
+    said = load_said(path + "similar_said.txt")
+
+    ltp_model_path = './model/'
+    sentences = split_sentences(string)
+    sents = split_words(sentences)
+    postags = get_word_pos(ltp_model_path, sents)
+    contents = dependency_parsing(ltp_model_path, sents, postags, said)
+    contents_dict = {}
+    for indx, ones in enumerate(contents):
+        contents_dict[str(indx)] = [ones[0], ones[1], ones[2]]
+
+    return contents_dict
+
+
 if __name__ == '__main__':
     string = """
     今天看到了微博热搜“人造奶”，非常好奇到底什么是人造奶？要知道现代世界科技发达，很多东西都能人造形成，就比如割的双眼皮，比如种的假酒窝等等，这些人造的东西真的是层出不穷，当然每个人都有自己选择的自由，但是今天出现的这个人造奶着实也是让人眼前一亮，也就是说，不需要奶牛的牛奶，如果是你你会喝吗？
@@ -69,13 +86,4 @@ if __name__ == '__main__':
 
     每个人站在不同的角度也都给出了自己的看法，其实个人认为很多东西都是纯天然的最好，而对于人造奶这样的市场，大家觉得怎么样呢？你会选择喝人造奶吗？
     """
-
-    path = "./word2vec_model/word2vermodel"
-    said = get_words_said(path)
-
-    ltp_model_path = '/home/zhaodao/下载/model/'
-    sentences = split_sentences(string)
-    sents = split_words(sentences)
-    postags = get_word_pos(ltp_model_path, sents)
-    contents = dependency_parsing(ltp_model_path, sents, postags, said)
-    print(contents)
+    del_sentences(string)

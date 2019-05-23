@@ -1,6 +1,6 @@
 import pymysql
 import os
-import urils
+import data.urils as urils
 
 
 # 从数据库中得到新闻语料库
@@ -57,14 +57,22 @@ def get_word_from_wiki(path):
                 break
 
 
+def get_news_from_netdist(netdist_path):
+    pass
+
 if __name__ == '__main__':
 
     host = "******"
-    user = "root"
-    password = "A1@2019@me"
-    database = "news_chinese"
-    port = 10102
-    get_news_from_sql(host, user, password, database, port)
+    user = "**"
+    password = "**"
+    database = "**"
+    port = 0
+    try:
+        get_news_from_sql(host, user, password, database, port)
+    except:
+        netdist_path = './'
+        get_news_from_netdist(netdist_path)
 
-    wiki_path = '/home/zhaodao/下载/text/'
+    # wiki_path = '/home/zhaodao/下载/text/'
+    wiki_path = './text/'
     get_word_from_wiki(wiki_path)

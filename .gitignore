@@ -1,5 +1,8 @@
 data/news-sentences-xut.txt
+data/__pycache__/
 __pycache__/
+model/
+similar_said/__pycache__/
 word2vec_model/word2*
 *.ipynb
 

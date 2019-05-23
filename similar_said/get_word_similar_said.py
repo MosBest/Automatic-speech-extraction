@@ -1,6 +1,6 @@
 from gensim.models import Word2Vec
 from collections import defaultdict
-
+import os
 
 def get_related_words(initial_words, model):
     """
@@ -35,6 +35,28 @@ def get_words_said(model_path):
     return said
 
 
+def save_said(path):
+    said = get_words_said(path)
+    string = '|'.join(said)
+    try:
+        with open("similar_said.txt", 'w') as f:
+            f.write(string)
+        return True
+    except:
+        return False
+
+
+def load_said(filename):
+    if os.path.exists(filename):
+        with open(filename, 'r') as f:
+            string = f.readlines()
+            string = string[0].split('|')
+            return string
+
+
 if __name__ == '__main__':
-    path = "./word2vec_model/word2vermodel"
-    get_words_said(path)
+    path = "../word2vec_model/word2vermodel"
+    result = save_said(path)
+    if result:
+        string = load_said("./similar_said.txt")
+        print(string)

@@ -2,22 +2,9 @@ from bottle import Bottle, static_file, get
 from bottle import template
 from bottle import request
 import json
-import work
+from work import del_sentences
 
-def del_sentences(string):
-    path = "../word2vec_model/word2vermodel"
-    said = work.get_words_said(path)
 
-    ltp_model_path = '/home/zhaodao/下载/model/'
-    sentences = work.split_sentences(string)
-    sents = work.split_words(sentences)
-    postags = work.get_word_pos(ltp_model_path, sents)
-    contents = work.dependency_parsing(ltp_model_path, sents, postags, said)
-    contents_dict = {}
-    for indx, ones in enumerate(contents):
-        contents_dict[str(indx)] = [ones[0], ones[1], ones[2]]
-    print(contents_dict)
-    return contents_dict
 
 string1 = """
 今天看到了微博热搜“人造奶”，非常好奇到底什么是人造奶？要知道现代世界科技发达，很多东西都能人造形成，就比如割的双眼皮，比如种的假酒窝等等，这些人造的东西真的是层出不穷，当然每个人都有自己选择的自由，但是今天出现的这个人造奶着实也是让人眼前一亮，也就是说，不需要奶牛的牛奶，如果是你你会喝吗？
@@ -30,7 +17,7 @@ string1 = """
 每个人站在不同的角度也都给出了自己的看法，其实个人认为很多东西都是纯天然的最好，而对于人造奶这样的市场，大家觉得怎么样呢？你会选择喝人造奶吗？
 """
 
-#contents_dict = del_sentences(string)
+
 
 root = Bottle()
 
@@ -39,20 +26,18 @@ root = Bottle()
 def index(name={"1":[1,2,3]}):
     print(request.method)
     if request.method == 'GET':
-        print("string2")
+        print("GET")
         return template('index.html', name=name)
     else:
-        print("string1")
-        import chardet
-
+        print("pust")
         string = request.forms.getunicode('string')
-        print("string", string)
+
         string = string.encode("utf-8")
-        print("string", string)
+
         contents_dict = del_sentences(string)
-        print("contents_dict", contents_dict)
+
         contents_dict = json.dumps(contents_dict)
-        print(contents_dict)
+
         return template('index.html', name=contents_dict)
 
 # Static Routes
