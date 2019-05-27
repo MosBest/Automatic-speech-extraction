@@ -14,7 +14,7 @@
                     var str = '{{name}}';
                     var a = str.replace(/&quot;/g,"\"");
                     var data = JSON.parse(a);
-  
+
 
                     head = '<table class="table"><caption>新闻言论提取</caption><thead> \
                                 <tr><th>人名/机构名</th><th>动作</th><th>内容</th> </tr> </thead>'
@@ -35,15 +35,7 @@
     <body>
             <!--<script>document.write("<p1>hello {{name}}</p1>")</script>-->
             <div style="padding: 50px 50px 50px;">
-                <form class="bs-example bs-example-form" role="form" method="post">
-                    <div class="input-group">
-                        <span class="input-group-addon">url</span>
-                        <input type="text" class="form-control" name="string" placeholder="新闻url链接">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <br>
-                <br>
+                
                 <form class="bs-example bs-example-form" role="form" method="post">
                     <div class="input-group">
                         <span class="input-group-addon">news</span>
