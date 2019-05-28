@@ -23,7 +23,7 @@ sudo apt-get update
 
 sudo apt-get install python3.6
 ```
-3. 安装python3.6
+3. 安装python3.6的venv模块
 ```
 sudo apt install python3.6-venv
 ```
@@ -36,9 +36,13 @@ python3.6 -m venv myprojectenv
 5. 激活虚拟环境
 ```
 source myprojectenv/bin/activate
+
 ```
 您的提示将更改为表示您现在正在虚拟环境中运行。它看起来像这样。`(myprojectenv)user@host:~/myproject$`
 
+以后：
+
+**无论您使用的是哪个版本的Python，在激活虚拟环境时，都应该使用pip命令（不是pip3）。**
 
 ### 拷贝该项目代码
 本次项目中的　语法分析　都是使用　哈工大　的　LTP 。而该模型过大，不好传送到github上面，所以这里讲解下载方式。
@@ -100,7 +104,12 @@ pip install jieba
 pip install bottle
 ```
 
-运行 index.py文件。(注意 index.py中　root.run(host='', port=8051) host应该是'0.0.0.1', port是端口号，看服务器提供了哪些可用)
+运行 index.py文件。
+
+(注意 index.py中　root.run(host='', port=8051) host应该是'0.0.0.1', port是端口号，看服务器提供了哪些可用)
+
+(修改index.py时，可以使用nano命令，或者vim命令)
+
 
 ```
 python index.py
